@@ -6,7 +6,7 @@
     python3 -m http.server -d _site 8080
 
 The notes themselves live in each project's own repository (notes/*.md, assets/).
-This site only copies them: the home page lists the projects, each project gets
+This site only copies them: the home page is home.md (research overview), each project gets
 its own folder (fr3/, kanake/, ...), the note list stays on the left and the
 project list sits on the right.
 """
@@ -30,18 +30,18 @@ FONT = ('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/vari
 CSS_VERSION = hashlib.md5((ROOT / 'styles.css').read_bytes()).hexdigest()[:8]
 EXTENSIONS = ['tables', 'attr_list', 'admonition', 'fenced_code', 'sane_lists', 'toc']
 
-# Order on the home page and in the right-hand list.
-# slug = folder on this site, repo = GitHub repository, period = shown on the card and the
+# Order in the right-hand list (most recent first).
+# slug = folder on this site, repo = GitHub repository, period = shown on the home page and the
 # project's overview page here (replaces the date written in the project's 00-index.md).
 PROJECTS = [
-    {'slug': 'kanake', 'repo': 'Kanake_note', 'dir': 'kanake_note', 'name': 'Kanake 뱀로봇',
-     'period': '2024.03 – 2026.02'},
+    {'slug': 'fr3', 'repo': 'fr3_note', 'dir': 'fr3_note', 'name': 'FR3 로봇팔',
+     'period': '2026.09 – 진행 중'},
     {'slug': 'teraffe', 'repo': 'Teraffe_note', 'dir': 'teraffe_note', 'name': 'Teraffe 고소작업로봇',
      'period': '2026.03 – 진행 중'},
     {'slug': 'piperobot', 'repo': 'piperobot_note', 'dir': 'piperobot_note', 'name': 'PipeRobot 배관 로봇',
      'period': '2024.12 – 2025.12'},
-    {'slug': 'fr3', 'repo': 'fr3_note', 'dir': 'fr3_note', 'name': 'FR3 로봇팔',
-     'period': '2026.09 – 진행 중'},
+    {'slug': 'kanake', 'repo': 'Kanake_note', 'dir': 'kanake_note', 'name': 'Kanake 뱀로봇',
+     'period': '2024.03 – 2026.02'},
 ]
 
 
@@ -190,24 +190,13 @@ def build_project(project, folder, notes):
             when=when), encoding='utf-8')
 
 
-def home(loaded):
-    cards = ''
-    for project, (_, notes) in loaded:
-        index = next(m for n, m, _ in notes if n == 'index.html')
-        base = project['slug']
-        links = ''.join(f'<li><a href="{base}/{n}">{escape(m.get("nav", m["title"]))}</a></li>'
-                        for n, m, _ in notes if n != 'index.html')
-        cards += f'''<article class="card">
-<p class="meta">{escape(project['period'])}</p>
-<h2><a href="{base}/index.html">{escape(index['title'])}</a></h2>
-<p class="desc">{escape(index.get('description', ''))}</p>
-<details><summary>기록 {len(notes) - 1}개</summary><ol>{links}</ol></details>
-<p class="more"><a href="{base}/index.html">개요 보기 →</a></p>
-</article>
-'''
-    body = f'<div class="cards">{cards}</div>'
-    return page(title=SITE_TITLE, description='KAERI 로봇 프로젝트 기록 모음.',
-                body=body, left='', current=None, up='')
+def home():
+    """Home page: research overview written in home.md. {{period:slug}} -> the project's period."""
+    periods = {p['slug']: p['period'] for p in PROJECTS}
+    text = re.sub(r'\{\{period:(\w+)\}\}', lambda m: periods[m.group(1)],
+                  (ROOT / 'home.md').read_text(encoding='utf-8'))
+    return page(title=SITE_TITLE, description='원자력 시설에서 사람 대신 일하는 로봇 연구 기록.',
+                body=polish(render(text)), left='', current=None, up='')
 
 
 def main():
@@ -225,7 +214,7 @@ def main():
 
     for project, (folder, notes) in loaded:
         build_project(project, folder, notes)
-    (OUT / 'index.html').write_text(home(loaded), encoding='utf-8')
+    (OUT / 'index.html').write_text(home(), encoding='utf-8')
     (OUT / '404.html').write_text(page(
         title='페이지를 찾을 수 없습니다', description='없는 페이지',
         body=f'<p>주소가 바뀌었거나 없는 페이지입니다. <a href="{SITE_PATH}index.html">처음 화면</a>에서 '

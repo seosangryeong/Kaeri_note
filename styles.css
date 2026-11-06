@@ -63,18 +63,6 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outli
 .project-strip li { margin: 0; flex: none; }
 .project-strip a { display: block; padding: 4px 10px; border-radius: 6px; color: var(--text); font-size: 14.5px; white-space: nowrap; }
 
-/* ---------- home page cards ---------- */
-.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
-.card { border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px 16px; display: flex; flex-direction: column; }
-.card .meta { font-size: 13.5px; color: var(--muted); margin: 0 0 2px; }
-.card h2 { font-size: 20px; margin: 0 0 8px; padding: 0; border: 0; }
-.card h2 a { color: var(--text); }
-.card .desc { font-size: 15.5px; line-height: 1.65; color: var(--text); flex: 1; }
-.card details { font-size: 15px; margin: 0 0 8px; }
-.card summary { cursor: pointer; color: var(--muted); }
-.card details ol { margin: 6px 0 0; }
-.card .more { margin: 0; font-size: 15px; font-weight: 600; }
-
 /* ---------- note head ---------- */
 .note-head { margin-bottom: 20px; }
 .note-head .meta { font-size: 14px; color: var(--muted); margin: 0 0 4px; }
@@ -149,7 +137,6 @@ details.explain > .body { padding: 14px 18px 6px; }
   .side summary { display: block; cursor: pointer; font-weight: 600; padding: 8px 4px; }
   .content { padding: 24px 20px 48px; }
   .issues { grid-template-columns: 1fr; }
-  .cards { grid-template-columns: minmax(0, 1fr); }
   .admonition.issue { padding: 18px 18px 16px; }
 }
 @media (max-width: 600px) {
@@ -157,7 +144,6 @@ details.explain > .body { padding: 14px 18px 6px; }
   .site-header { position: static; }
   .site-header .inner { padding: 12px 16px; }
   .project-strip ol { padding: 6px 12px; }
-  .cards { grid-template-columns: 1fr; }
   .content { padding: 20px 16px 40px; }
   h1 { font-size: 26px; }
   h2 { font-size: 21px; }

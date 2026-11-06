@@ -35,7 +35,8 @@ python3 -m http.server -d _site 8080     # http://localhost:8080
 
 | 파일 | 내용 |
 | --- | --- |
-| `build.py` | 프로젝트 노트 → `_site/` (홈 + 프로젝트별 폴더) |
+| `home.md` | 첫 화면의 연구 소개 (`{{period:slug}}`는 `build.py`의 기간으로 바뀜) |
+| `build.py` | 프로젝트 노트 → `_site/` (홈 + 프로젝트별 폴더), 프로젝트 순서·기간 |
 | `styles.css` | 스타일 (각 프로젝트 사이트와 같은 모양 + 오른쪽 프로젝트 목록) |
 | `check_site.py` | 깨진 링크 검사 |
 | `.github/workflows/site.yml` | push·매일·수동 실행 시 빌드·검사·GitHub Pages 배포 |
