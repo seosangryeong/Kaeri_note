@@ -89,7 +89,7 @@ pre code { background: none; padding: 0; }
 /* photo rows on the home page: every photo the same height, width follows its own shape */
 .gallery { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 14px; }
 .gallery figure { margin: 0; width: min-content; }
-.gallery img { height: 220px; width: auto; max-width: none; margin: 0; }
+.gallery img { height: 200px; width: auto; max-width: none; margin: 0; }
 .gallery figcaption { font-size: 14px; color: var(--muted); line-height: 1.5; margin-top: 4px; }
 .gallery .credit { font-size: 12px; }
 
