@@ -7,13 +7,13 @@
 후쿠시마 원전 사고처럼 사고가 나면 방사선량이 높고 구조물이 무너져 사람이 들어갈 수 없다. 이런 현장에 먼저 들어가 좁은 공간을 지나가고, 높은 곳의 설비를 직접 조작하는 로봇이다. 연구실에서는 원격 조작 로봇, 이동 로봇 등 여러 사고 대응 로봇을 개발해 왔다.
 
 <div class="gallery">
-<figure style="flex: 1.47"><img src="assets/fukushima.jpg" alt="수소 폭발 후 무너진 후쿠시마 원전 건물"><figcaption>후쿠시마 원전 사고 현장</figcaption></figure>
+<figure style="flex: 2.01"><img src="assets/fukushima.jpg" alt="수소 폭발로 무너진 후쿠시마 제1원전 3호기 건물"><figcaption>후쿠시마 제1원전 3호기 (2011.10)<br><span class="credit">사진: IAEA Imagebank, <a href="https://commons.wikimedia.org/wiki/File:Visit_to_the_Fukushima_Dai-ichi_Nuclear_Power_Plant_(6234779912).jpg">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption></figure>
 <figure style="flex: 1.67"><img src="assets/kaeri-robots.jpg" alt="KAERI 로봇응용연구실의 사고 대응 로봇들"><figcaption>연구실의 사고 대응 로봇들 (KAERI)</figcaption></figure>
 </div>
 
 <div class="gallery">
 <figure style="flex: 1.78"><a href="teraffe/index.html"><img src="teraffe/assets/teraffe-integrated-sim.jpg" alt="원자력 시설 시뮬레이션에서 고소 작업을 하는 Teraffe"></a><figcaption>Teraffe: 높은 곳의 밸브 조작</figcaption></figure>
-<figure style="flex: 2.48"><a href="kanake/index.html"><img src="kanake/assets/kaeri-snake.jpg" alt="16관절 뱀로봇 KAERI-SNAKE IV"></a><figcaption>Kanake: 좁은 틈을 지나가는 뱀로봇</figcaption></figure>
+<figure style="flex: 1.44"><a href="kanake/index.html"><img src="assets/kanake-field.jpg" alt="플랜트 배관 아래를 지나가는 뱀로봇 KAERI-SNAKE IV"></a><figcaption>Kanake: 좁은 틈을 지나가는 뱀로봇</figcaption></figure>
 </div>
 
 - **[Teraffe 고소작업로봇](teraffe/index.html)** · {{period:teraffe}}<br>
