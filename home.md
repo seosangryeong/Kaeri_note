@@ -19,3 +19,4 @@
 - [Teraffe 고소작업로봇](teraffe/index.html) · {{period:teraffe}}
 - [PipeRobot 배관 로봇](piperobot/index.html) · {{period:piperobot}}
 - [Kanake 뱀로봇](kanake/index.html) · {{period:kanake}}
+- [R-BIZ 챌린지 우주 탐사 로버](rbiz/index.html) · {{period:rbiz}}

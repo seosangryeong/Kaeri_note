@@ -28,6 +28,8 @@ jobs:
         with: { repository: seosangryeong/piperobot_note, path: sources/piperobot_note }
       - uses: actions/checkout@v6
         with: { repository: seosangryeong/fr3_note, path: sources/fr3_note }
+      - uses: actions/checkout@v6
+        with: { repository: seosangryeong/rbiz_challenge_note, path: sources/rbiz_challenge_note }
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'

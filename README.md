@@ -2,7 +2,7 @@
 
 사이트: https://seosangryeong.github.io/Kaeri_note/
 
-KAERI 로봇 프로젝트 기록 네 개를 한 사이트로 모은 저장소입니다. 왼쪽에는 프로젝트의 기록 목록, 오른쪽에는 프로젝트 목록이 있습니다.
+로봇 프로젝트 기록 다섯 개를 한 사이트로 모은 저장소입니다. 왼쪽에는 프로젝트의 기록 목록, 오른쪽에는 프로젝트 목록이 있습니다.
 
 기록 내용은 여기 없고, 각 프로젝트 저장소의 `notes/`, `assets/`를 빌드할 때 읽어 옵니다. 각 프로젝트 사이트는 따로 그대로 있습니다.
 
@@ -12,6 +12,7 @@ KAERI 로봇 프로젝트 기록 네 개를 한 사이트로 모은 저장소입
 | Teraffe 고소작업로봇 | [Teraffe_note](https://github.com/seosangryeong/Teraffe_note) | https://seosangryeong.github.io/Teraffe_note/ |
 | PipeRobot 배관 로봇 | [piperobot_note](https://github.com/seosangryeong/piperobot_note) | https://seosangryeong.github.io/piperobot_note/ |
 | FR3 로봇팔 | [fr3_note](https://github.com/seosangryeong/fr3_note) | https://seosangryeong.github.io/fr3_note/ |
+| R-BIZ 챌린지 로버 | [rbiz_challenge_note](https://github.com/seosangryeong/rbiz_challenge_note) | https://seosangryeong.github.io/rbiz_challenge_note/ |
 
 ## 업데이트
 
