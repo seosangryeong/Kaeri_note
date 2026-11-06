@@ -31,12 +31,17 @@ CSS_VERSION = hashlib.md5((ROOT / 'styles.css').read_bytes()).hexdigest()[:8]
 EXTENSIONS = ['tables', 'attr_list', 'admonition', 'fenced_code', 'sane_lists', 'toc']
 
 # Order on the home page and in the right-hand list.
-# slug = folder on this site, repo = GitHub repository (and local folder name).
+# slug = folder on this site, repo = GitHub repository, period = shown on the card and the
+# project's overview page here (replaces the date written in the project's 00-index.md).
 PROJECTS = [
-    {'slug': 'kanake', 'repo': 'Kanake_note', 'dir': 'kanake_note', 'name': 'Kanake 뱀로봇'},
-    {'slug': 'teraffe', 'repo': 'Teraffe_note', 'dir': 'teraffe_note', 'name': 'Teraffe 고소작업로봇'},
-    {'slug': 'piperobot', 'repo': 'piperobot_note', 'dir': 'piperobot_note', 'name': 'PipeRobot 배관 로봇'},
-    {'slug': 'fr3', 'repo': 'fr3_note', 'dir': 'fr3_note', 'name': 'FR3 로봇팔'},
+    {'slug': 'kanake', 'repo': 'Kanake_note', 'dir': 'kanake_note', 'name': 'Kanake 뱀로봇',
+     'period': '2024.03 – 2026.02'},
+    {'slug': 'teraffe', 'repo': 'Teraffe_note', 'dir': 'teraffe_note', 'name': 'Teraffe 고소작업로봇',
+     'period': '2026.03 – 진행 중'},
+    {'slug': 'piperobot', 'repo': 'piperobot_note', 'dir': 'piperobot_note', 'name': 'PipeRobot 배관 로봇',
+     'period': '2024.12 – 2025.12'},
+    {'slug': 'fr3', 'repo': 'fr3_note', 'dir': 'fr3_note', 'name': 'FR3 로봇팔',
+     'period': '2026.09 – 진행 중'},
 ]
 
 
@@ -178,10 +183,11 @@ def build_project(project, folder, notes):
     for name, meta, text in notes:
         body = polish(render(fold_outs(text)))
         title = meta['title']
+        when = project['period'] if name == 'index.html' else meta.get('date', '')
         (out / name).write_text(page(
             title=title, description=meta.get('description', title), body=body,
             left=left_nav(notes, name), current=project['slug'], up='../',
-            when=meta.get('date', '')), encoding='utf-8')
+            when=when), encoding='utf-8')
 
 
 def home(loaded):
@@ -192,16 +198,14 @@ def home(loaded):
         links = ''.join(f'<li><a href="{base}/{n}">{escape(m.get("nav", m["title"]))}</a></li>'
                         for n, m, _ in notes if n != 'index.html')
         cards += f'''<article class="card">
-<p class="meta">{escape(index.get('date', ''))}</p>
+<p class="meta">{escape(project['period'])}</p>
 <h2><a href="{base}/index.html">{escape(index['title'])}</a></h2>
 <p class="desc">{escape(index.get('description', ''))}</p>
 <details><summary>기록 {len(notes) - 1}개</summary><ol>{links}</ol></details>
 <p class="more"><a href="{base}/index.html">개요 보기 →</a></p>
 </article>
 '''
-    body = ('<p class="lead">한국원자력연구원(KAERI)에서 진행한 로봇 프로젝트 기록을 한곳에 모았다. '
-            '프로젝트를 고르면 그 프로젝트의 개요와 기록으로 들어간다.</p>\n'
-            f'<div class="cards">{cards}</div>')
+    body = f'<div class="cards">{cards}</div>'
     return page(title=SITE_TITLE, description='KAERI 로봇 프로젝트 기록 모음.',
                 body=body, left='', current=None, up='')
 
