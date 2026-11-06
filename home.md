@@ -7,13 +7,13 @@
 후쿠시마 원전 사고처럼 사고가 나면 방사선량이 높고 구조물이 무너져 사람이 들어갈 수 없다. 이런 현장에 먼저 들어가 좁은 공간을 지나가고, 높은 곳의 설비를 직접 조작하는 로봇이다. 연구실에서는 원격 조작 로봇, 이동 로봇 등 여러 사고 대응 로봇을 개발해 왔다.
 
 <div class="gallery">
-<figure style="flex: 2.01"><img src="assets/fukushima.jpg" alt="수소 폭발로 무너진 후쿠시마 제1원전 3호기 건물"><figcaption>후쿠시마 제1원전 3호기 (2011.10)<br><span class="credit">사진: IAEA Imagebank, <a href="https://commons.wikimedia.org/wiki/File:Visit_to_the_Fukushima_Dai-ichi_Nuclear_Power_Plant_(6234779912).jpg">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption></figure>
-<figure style="flex: 1.67"><img src="assets/kaeri-robots.jpg" alt="KAERI 로봇응용연구실의 사고 대응 로봇들"><figcaption>연구실의 사고 대응 로봇들 (KAERI)</figcaption></figure>
+<figure><img src="assets/fukushima.jpg" alt="방호복을 입고 무너진 후쿠시마 제1원전 4호기 옆을 지나는 사람들"><figcaption>방호복을 입고 후쿠시마 제1원전 4호기를 나서는 IAEA 조사단 (2013.04)<br><span class="credit">사진: Greg Webb / IAEA, <a href="https://commons.wikimedia.org/wiki/File:IAEA_Experts_at_Fukushima_(02813336).jpg">Wikimedia Commons</a>, CC BY-SA 2.0</span></figcaption></figure>
+<figure><img src="assets/kaeri-robots.jpg" alt="KAERI 로봇응용연구실의 사고 대응 로봇들"><figcaption>연구실의 사고 대응 로봇들 (KAERI)</figcaption></figure>
 </div>
 
 <div class="gallery">
-<figure style="flex: 1.78"><a href="teraffe/index.html"><img src="teraffe/assets/teraffe-integrated-sim.jpg" alt="원자력 시설 시뮬레이션에서 고소 작업을 하는 Teraffe"></a><figcaption>Teraffe: 높은 곳의 밸브 조작</figcaption></figure>
-<figure style="flex: 1.44"><a href="kanake/index.html"><img src="assets/kanake-field.jpg" alt="플랜트 배관 아래를 지나가는 뱀로봇 KAERI-SNAKE IV"></a><figcaption>Kanake: 좁은 틈을 지나가는 뱀로봇</figcaption></figure>
+<figure><a href="teraffe/index.html"><img src="teraffe/assets/teraffe-integrated-sim.jpg" alt="원자력 시설 시뮬레이션에서 고소 작업을 하는 Teraffe"></a><figcaption>Teraffe: 높은 곳의 밸브 조작</figcaption></figure>
+<figure><a href="kanake/index.html"><img src="assets/kanake-field.jpg" alt="플랜트 배관 아래를 지나가는 뱀로봇 KAERI-SNAKE IV"></a><figcaption>Kanake: 좁은 틈을 지나가는 뱀로봇</figcaption></figure>
 </div>
 
 - **[Teraffe 고소작업로봇](teraffe/index.html)** · {{period:teraffe}}<br>
@@ -26,8 +26,8 @@
 발전소와 플랜트 설비는 오래 쓸수록 정기 점검이 꼭 필요하다. 하지만 점검 대상이 높거나 좁은 곳, 보온재로 덮인 배관에 있어 사람이 하기엔 비용과 위험이 크다. 4족 보행 로봇이 변전소나 해양 플랜트를 정해진 경로로 돌며 점검하는 것처럼, 이런 점검을 사람 대신 주기적으로 하는 로봇이다.
 
 <div class="gallery">
-<figure style="flex: 1.5"><img src="assets/anymal-inspection.jpg" alt="변전소를 걸으며 점검하는 4족 보행 로봇 ANYmal"><figcaption>변전소를 순찰하며 점검하는 4족 보행 로봇 ANYmal<br><span class="credit">사진: Cvoellmy, <a href="https://commons.wikimedia.org/wiki/File:Anymal-robot-inspection-power-grid.jpg">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption></figure>
-<figure style="flex: 2.17"><a href="piperobot/index.html"><img src="piperobot/assets/pipe-robot.jpg" alt="배관 목업 위의 PipeRobot"></a><figcaption>PipeRobot: 보온재 배관을 따라 달리는 검사 로봇</figcaption></figure>
+<figure><img src="assets/anymal-inspection.jpg" alt="변전소를 걸으며 점검하는 4족 보행 로봇 ANYmal"><figcaption>변전소를 순찰하며 점검하는 4족 보행 로봇 ANYmal<br><span class="credit">사진: Cvoellmy, <a href="https://commons.wikimedia.org/wiki/File:Anymal-robot-inspection-power-grid.jpg">Wikimedia Commons</a>, CC BY-SA 4.0</span></figcaption></figure>
+<figure><a href="piperobot/index.html"><img src="assets/piperobot-real.jpg" alt="배관 목업 위의 PipeRobot"></a><figcaption>PipeRobot: 보온재 배관을 따라 달리는 검사 로봇</figcaption></figure>
 </div>
 
 - **[PipeRobot 배관 로봇](piperobot/index.html)** · {{period:piperobot}}<br>

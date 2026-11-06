@@ -86,10 +86,10 @@ pre code { background: none; padding: 0; }
 .content img { display: block; max-width: 100%; height: auto; margin: 8px 0 6px; border: 1px solid var(--line); border-radius: 8px; }
 .content img + em, .content p > em:only-child { color: var(--muted); font-size: 14px; }
 
-/* photo rows on the home page: same height, each photo keeps its own shape (flex = width / height) */
-.gallery { display: flex; gap: 12px; margin: 8px 0 14px; max-width: 820px; }
-.gallery figure { margin: 0; min-width: 0; }
-.gallery img { width: 100%; margin: 0; }
+/* photo rows on the home page: every photo the same height, width follows its own shape */
+.gallery { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 14px; }
+.gallery figure { margin: 0; width: min-content; }
+.gallery img { height: 220px; width: auto; max-width: none; margin: 0; }
 .gallery figcaption { font-size: 14px; color: var(--muted); line-height: 1.5; margin-top: 4px; }
 .gallery .credit { font-size: 12px; }
 
@@ -150,7 +150,8 @@ details.explain > .body { padding: 14px 18px 6px; }
   body { font-size: 16.5px; }
   .site-header { position: static; }
   .site-header .inner { padding: 12px 16px; }
-  .gallery { flex-direction: column; }
+  .gallery figure { width: 100%; }
+  .gallery img { width: 100%; height: auto; }
   .project-strip ol { padding: 6px 12px; }
   .content { padding: 20px 16px 40px; }
   h1 { font-size: 26px; }
