@@ -210,7 +210,8 @@ def main():
         shutil.rmtree(OUT)
     (OUT / 'assets').mkdir(parents=True)
     shutil.copy(ROOT / 'styles.css', OUT / 'styles.css')
-    shutil.copy(ROOT / 'assets' / 'favicon.svg', OUT / 'assets' / 'favicon.svg')
+    for asset in (ROOT / 'assets').iterdir():
+        shutil.copy(asset, OUT / 'assets' / asset.name)
 
     for project, (folder, notes) in loaded:
         build_project(project, folder, notes)
