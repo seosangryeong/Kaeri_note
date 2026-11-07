@@ -1,18 +1,34 @@
 #!/usr/bin/env python3
 """Build one site that holds every project's notes.
 
-    python3 build.py                  # reads ../fr3_note, ../kanake_note, ... (sibling folders)
-    python3 build.py --src sources    # reads sources/fr3_note, ... (used by GitHub Actions)
+    python3 build.py
     python3 -m http.server -d _site 8080
 
-The notes themselves live in each project's own repository (notes/*.md, assets/).
-This site only copies them: the home page is home.md (research overview), each project gets
-its own folder (fr3/, kanake/, ...), the note list stays on the left and the
-project list sits on the right.
+Each project's notes live in projects/<slug>/notes/*.md, its pictures in projects/<slug>/assets/.
+The home page is home.md, each project gets its own folder on the site (projects/fr3 -> fr3/),
+the note list stays on the left and the project list sits on the right.
+
+Each note starts with a small header:
+
+    ---
+    title: 자성체 탐지
+    nav: 자성체 탐지                 (sidebar label, optional)
+    date: 기록 2                     (shown above the title)
+    ---
+
+Besides normal Markdown (tables, lists, code), notes can use:
+
+    !!! summary "한 줄 요약"          coloured box
+    !!! issue "제목"                 problem / cause / fix card (consecutive
+        **문제** ...                 cards are laid out side by side)
+    !!! lesson "배운 점"             outlined box
+    ??? 원리: 제목                    fold-out explanation, closed by default
+        (indented Markdown)
+
+Pages are ordered by file name. 00-index.md becomes index.html.
 """
 from html import escape
 from pathlib import Path
-import argparse
 import hashlib
 import re
 import shutil
@@ -31,23 +47,23 @@ CSS_VERSION = hashlib.md5((ROOT / 'styles.css').read_bytes()).hexdigest()[:8]
 EXTENSIONS = ['tables', 'attr_list', 'admonition', 'fenced_code', 'sane_lists', 'toc']
 
 # Order in the right-hand list (most recent first).
-# slug = folder on this site, repo = GitHub repository, period = shown on the home page and the
+# slug = folder under projects/ and on the site, period = shown on the home page and the
 # project's overview page here (replaces the date written in the project's 00-index.md).
 PROJECTS = [
-    {'slug': 'fr3', 'repo': 'fr3_note', 'dir': 'fr3_note', 'name': 'FR3 로봇팔',
+    {'slug': 'fr3', 'name': 'FR3 로봇팔',
      'period': '2026.09 – 진행 중'},
-    {'slug': 'teraffe', 'repo': 'Teraffe_note', 'dir': 'teraffe_note', 'name': 'Teraffe 고소작업로봇',
+    {'slug': 'teraffe', 'name': 'Teraffe 고소작업로봇',
      'period': '2026.03 – 진행 중'},
-    {'slug': 'piperobot', 'repo': 'piperobot_note', 'dir': 'piperobot_note', 'name': 'PipeRobot 배관 로봇',
+    {'slug': 'piperobot', 'name': 'PipeRobot 배관 로봇',
      'period': '2024.12 – 2025.12'},
-    {'slug': 'kanake', 'repo': 'Kanake_note', 'dir': 'kanake_note', 'name': 'Kanake 뱀로봇',
+    {'slug': 'kanake', 'name': 'Kanake 뱀로봇',
      'period': '2024.03 – 2026.02'},
-    {'slug': 'other', 'repo': 'other_projects', 'dir': 'other_projects', 'name': '기타 프로젝트',
+    {'slug': 'other', 'name': '기타 프로젝트',
      'period': '2023.06 – 2026.02', 'collection': True},
 ]
 
 
-# ---------- Markdown (same rules as each project's build.py) ----------
+# ---------- Markdown ----------
 
 def render(text):
     return markdown.markdown(text, extensions=EXTENSIONS)
@@ -165,8 +181,8 @@ def left_nav(notes, name):
 
 # ---------- build ----------
 
-def load(project, src):
-    folder = src / project['dir']
+def load(project):
+    folder = ROOT / 'projects' / project['slug']
     if not (folder / 'notes').is_dir():
         raise SystemExit(f'notes not found: {folder}/notes')
     notes = []
@@ -205,12 +221,7 @@ def home():
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--src', default=str(ROOT.parent),
-                        help='folder that holds fr3_note/, kanake_note/, ... (default: parent folder)')
-    src = Path(parser.parse_args().src).resolve()
-
-    loaded = [(p, load(p, src)) for p in PROJECTS]
+    loaded = [(p, load(p)) for p in PROJECTS]
     if OUT.exists():
         shutil.rmtree(OUT)
     (OUT / 'assets').mkdir(parents=True)
