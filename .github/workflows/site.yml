@@ -29,8 +29,6 @@ jobs:
       - uses: actions/checkout@v6
         with: { repository: seosangryeong/fr3_note, path: sources/fr3_note }
       - uses: actions/checkout@v6
-        with: { repository: seosangryeong/rbiz_challenge_note, path: sources/rbiz_challenge_note }
-      - uses: actions/checkout@v6
         with: { repository: seosangryeong/other_projects, path: sources/other_projects }
       - uses: actions/setup-python@v5
         with:
