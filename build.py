@@ -44,6 +44,8 @@ PROJECTS = [
      'period': '2024.03 – 2026.02'},
     {'slug': 'rbiz', 'repo': 'rbiz_challenge_note', 'dir': 'rbiz_challenge_note', 'name': 'R-BIZ 챌린지 로버',
      'period': '2023.03 – 2023.10'},
+    {'slug': 'other', 'repo': 'other_projects', 'dir': 'other_projects', 'name': '기타 프로젝트',
+     'period': '2024 – 2025'},
 ]
 
 
