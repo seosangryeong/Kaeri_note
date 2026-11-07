@@ -45,7 +45,7 @@ PROJECTS = [
     {'slug': 'rbiz', 'repo': 'rbiz_challenge_note', 'dir': 'rbiz_challenge_note', 'name': 'R-BIZ 챌린지 로버',
      'period': '2023.03 – 2023.10'},
     {'slug': 'other', 'repo': 'other_projects', 'dir': 'other_projects', 'name': '기타 프로젝트',
-     'period': '2023.06 – 2026.02'},
+     'period': '2023.06 – 2026.02', 'collection': True},
 ]
 
 
@@ -187,7 +187,10 @@ def build_project(project, folder, notes):
     for name, meta, text in notes:
         body = polish(render(fold_outs(text)))
         title = meta['title']
-        when = project['period'] if name == 'index.html' else meta.get('date', '')
+        # A collection of unrelated projects: its period covers all of them, so don't show it on
+        # the first project's page.
+        on_index = name == 'index.html' and not project.get('collection')
+        when = project['period'] if on_index else meta.get('date', '')
         (out / name).write_text(page(
             title=title, description=meta.get('description', title), body=body,
             left=left_nav(notes, name), current=project['slug'], up='../',
