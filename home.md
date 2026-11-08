@@ -15,7 +15,6 @@
 
 ## 연구 기록
 
-- [FR3 로봇팔](fr3/index.html) · {{period:fr3}}
 - [Teraffe 고소작업로봇](teraffe/index.html) · {{period:teraffe}}
 - [PipeRobot 배관 로봇](piperobot/index.html) · {{period:piperobot}}
 - [Kanake 뱀로봇](kanake/index.html) · {{period:kanake}}

@@ -8,7 +8,6 @@
 
 | 프로젝트 | 폴더 |
 | --- | --- |
-| FR3 로봇팔 | `projects/fr3/` |
 | Teraffe 고소작업로봇 | `projects/teraffe/` |
 | PipeRobot 배관 로봇 | `projects/piperobot/` |
 | Kanake 뱀로봇 | `projects/kanake/` |
