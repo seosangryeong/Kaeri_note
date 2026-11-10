@@ -50,6 +50,8 @@ EXTENSIONS = ['tables', 'attr_list', 'admonition', 'fenced_code', 'sane_lists', 
 # slug = folder under projects/ and on the site, period = shown on the home page and the
 # project's overview page here (replaces the date written in the project's 00-index.md).
 PROJECTS = [
+    {'slug': 'fr3', 'name': 'FR3 로봇팔',
+     'period': '2026.09 – 진행 중'},
     {'slug': 'teraffe', 'name': 'Teraffe 고소작업로봇',
      'period': '2026.03 – 진행 중'},
     {'slug': 'piperobot', 'name': 'PipeRobot 배관 로봇',

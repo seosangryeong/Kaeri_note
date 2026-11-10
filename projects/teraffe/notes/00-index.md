@@ -6,7 +6,7 @@ description: 다리 길이를 바꾸는 바퀴형 고소작업로봇 Teraffe의 
 ---
 
 !!! summary "이 프로젝트는"
-    Teraffe는 원자력 시설의 높은 곳에 있는 밸브를 조작하기 위한 **4륜 이동형 고소작업로봇**이다. 네 다리(3단 텔레스코픽 리프트)의 길이를 따로 바꿔 높이(1.7–3.55 m)와 차체 수평을 조절하고, 상부에 로봇팔을 얹어 작업한다. **시뮬레이션**(Isaac Sim)에서는 주행, 자동 수평, 1 m 단차 넘기, 로봇팔로 밸브를 찾아 돌리는 작업까지 ROS 2로 만들었고, **실물**에서는 블록 체인 리프트의 모터와 엔코더를 직접 제어했고, 실물 밸브 조작을 위해 연구실 로봇팔(FR3)의 제어·카메라 보정·자동 작업 시퀀스를 만들었다. 다리 길이·조향·바퀴를 함께 쓰는 주행은 Isaac Lab과 MuJoCo에서 **강화학습**으로도 학습했다.
+    Teraffe는 원자력 시설의 높은 곳에 있는 밸브를 조작하기 위한 **4륜 이동형 고소작업로봇**이다. 네 다리(3단 텔레스코픽 리프트)의 길이를 따로 바꿔 높이(1.7–3.55 m)와 차체 수평을 조절하고, 상부에 로봇팔을 얹어 작업한다. **시뮬레이션**(Isaac Sim)에서는 주행, 자동 수평, 1 m 단차 넘기, 로봇팔로 밸브를 찾아 돌리는 작업까지 ROS 2로 만들었고, **실물**에서는 블록 체인 리프트의 모터와 엔코더를 직접 제어했다. 다리 길이·조향·바퀴를 함께 쓰는 주행은 Isaac Lab과 MuJoCo에서 **강화학습**으로도 학습했다.
 
 ![Teraffe 통합 운용 시뮬레이션](assets/teraffe-integrated-sim.jpg)
 *원자력 시설을 본뜬 장면에서 Teraffe가 Franka Panda를 얹고 고소 작업을 하는 통합 시뮬레이션.*
@@ -65,10 +65,10 @@ description: 다리 길이를 바꾸는 바퀴형 고소작업로봇 Teraffe의 
 | | 시뮬레이션 | 실물 |
 |---|---|---|
 | 패키지 | `teraffe_control_agent` | `teraffe_drive_control_agent` |
-| 대상 | Isaac Sim 4.5 속 Teraffe + 지지팔 + Franka Panda | 실제 다리 리프트 4개, 실물 로봇팔 FR3 |
+| 대상 | Isaac Sim 4.5 속 Teraffe + 지지팔 + Franka Panda | 실제 다리 리프트 4개 |
 | 명령이 가는 곳 | `/joint_command` 토픽 하나 (JointState) | 모터에 CAN, RS-485로 직접 |
 | 입력 | 조이스틱, GUI, 로컬 LLM, 카메라 | 웹 UI, 데스크톱 UI, ROS 토픽 |
-| 기록 | 시뮬 1 ~ 5 | 실물 1 ~ 3 |
+| 기록 | 시뮬 1 ~ 5 | 실물 1 ~ 2 |
 
 강화학습은 Isaac Lab에서 따로 했다. 정책이 다리 높이·조향·바퀴 속도를 직접 정해 거친 지형 위 목표 지점까지 가게 학습했다([강화학습 주행](09-rl-navigation.md)).
 
@@ -97,7 +97,6 @@ MuJoCo에서는 실제 로봇 URDF로 모델을 다시 만들어 조이스틱 �
 | 완료 | 시뮬: YOLO + 깊이로 밸브 면과 중심을 찾고, 원 궤적으로 5바퀴 돌리기 |
 | 완료 | 실물: AK80-64(CAN), Dynamixel(RS-485), AMT212 엔코더(RS-485) 통신과 상태 UI |
 | 완료 | 실물: 엔코더 리밋 안에서만 움직이는 ROS 2 리프트 제어 |
-| 완료 | 실물: FR3 로봇팔 ROS 2 제어, 손목 카메라 hand-eye 보정, 보고-작업-확인 자동 시퀀스 (127회 시도 중 잡기 117회, 옮겨 놓기 116회) |
 | 진행 중 | 강화학습: 거친 지형 목표 지점 주행. 수평은 유지하지만 목표 도착은 아직 (평균 1.5 m 남음) |
 | 완료 | MuJoCo: 실제 URDF 모델, 지형 공원, 조이스틱 제어 재튜닝 (애커만·회전·수평 버그 수정) |
 | 진행 중 | MuJoCo 강화학습: 방향·속도·높이 명령 추종, 무작위 지형 커리큘럼 5단계 중 2단계 |
@@ -115,7 +114,6 @@ MuJoCo에서는 실제 로봇 URDF로 모델을 다시 만들어 조이스틱 �
 | 시뮬 5 | [밸브 인식과 돌리기](05-sim-valve.md) | YOLO + RANSAC 평면, 살 없는 시작점, 원 궤적 IK |
 | 실물 1 | [리프트 하드웨어 통신](06-real-hardware.md) | AK80-64 CAN, Dynamixel·AMT212 RS-485, 상태 UI |
 | 실물 2 | [리프트 제어와 안전 장치](07-real-lift.md) | 엔코더 리밋, ROS 토픽 제어, 통신 오류 시 정지 |
-| 실물 3 | [실물 로봇팔 (FR3)](08-real-arm.md) | 밸브 조작을 위한 실물 로봇팔 제어, hand-eye 보정, 자동 시퀀스 |
 | 강화학습 1 | [강화학습 주행 (Isaac Lab)](09-rl-navigation.md) | 액션 12개, 리워드 14개, 지형 커리큘럼, PPO |
 | MuJoCo 1 | [MuJoCo 모델과 조이스틱 제어](10-mujoco-sim.md) | URDF → MuJoCo, 지형 공원, 애커만·게걸음·회전·수평 재튜닝 |
 | MuJoCo 2 | [MuJoCo 강화학습 (GPU 병렬)](11-mujoco-rl.md) | Warp 4096 환경, 명령 추종, 리워드 v5, 성과 기반 커리큘럼 |
@@ -137,8 +135,6 @@ MuJoCo에서는 실제 로봇 URDF로 모델을 다시 만들어 조이스틱 �
 | 로봇팔 | 원 궤적 + 매 점 IK | 밸브 5바퀴 돌리기 | 시뮬 5 |
 | 하드웨어 | CAN 확장 프레임, Dynamixel Protocol 2.0, RS-485 반이중 | 모터·엔코더 통신 | 실물 1 |
 | 하드웨어 | 엔코더 체크섬, 각도 리밋 감시 | 리프트 안전 정지 | 실물 2 |
-| 비전 | 카메라 내부 보정, solvePnP + 광선–평면 교차 (eye-to-hand), hand-eye 보정 AX = XB (eye-in-hand) | 실물 로봇팔 카메라 → 로봇 좌표 | 실물 3 |
-| 로봇팔 | 깊이 평면 맞추기(SVD), 최소 면적 사각형, OMPL + 직선 경로 | 실물 로봇팔 목표 인식과 접근 | 실물 3 |
 | 강화학습 | PPO (RSL-RL), 지형 커리큘럼, 높이 스캔 관측 | 목표 지점 주행 | 강화학습 1 |
 | 강화학습 | 바퀴 옆 미끄러짐 벌점, 지면 기준 높이 범위 벌점 | 미끄러지지 않고 수평 유지 | 강화학습 1 |
 | 주행 | 공통 회전 중심 + 순기구학 바퀴 각도·속도 | MuJoCo 애커만, 제자리 회전 | MuJoCo 1 |
@@ -151,7 +147,7 @@ MuJoCo에서는 실제 로봇 URDF로 모델을 다시 만들어 조이스틱 �
 |---|---|
 | 시뮬레이터 | NVIDIA Isaac Sim 4.5 + ROS 2 브리지 |
 | ROS | ROS 2 Humble, Ubuntu 22.04, Python 3.10 |
-| 로봇팔 | Franka Panda (시뮬), Franka Research 3 (실물). roboticstoolbox-python, ikpy, MoveIt 2, franka_ros2 |
+| 로봇팔 | Franka Panda (시뮬). roboticstoolbox-python, ikpy, MoveIt 2 |
 | 비전 | Ultralytics YOLOv8n, SAM (vit_h), Open3D. 시뮬 카메라 외에 RealSense·ZED 버전도 있음 |
 | LLM | Ollama, gemma3:4b (로컬) |
 | 실물 리프트 | AK80-64 (주 모터), Dynamixel XH430 (보조 모터), AMT212 (절대 엔코더) |
@@ -164,4 +160,4 @@ MuJoCo에서는 실제 로봇 URDF로 모델을 다시 만들어 조이스틱 �
 1. 실물 주행·조향 모듈 구현 (`wheel_module.py`, `steering_motor.py`)
 2. 리프트 리밋 각도를 기구의 실제 동작 범위로 측정해 교체
 3. 시뮬의 다리 높이 명령을 실물 리프트 토픽(`/robot/lift_command`)과 연결
-4. 밸브 인식을 실물 카메라(RealSense)로 옮기고 FR3의 원 궤적과 연결해 실물 밸브 돌리기
+4. 밸브 인식을 실물 카메라(RealSense, ZED)로 옮기고 실물 로봇팔과 연결 ([FR3 로봇팔](../fr3/index.html)의 손목 카메라 검출·접근 구성 활용)
