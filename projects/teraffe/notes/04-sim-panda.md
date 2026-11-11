@@ -9,11 +9,11 @@ date: 시뮬레이션 · 기록 4
 
 ## 한 일
 
-- 원 그리기를 IK 세 가지로 구현해 비교 (`pandacontrol`, `panda_rtb`, `panda_ikpy`)
-- 목표 자세(위치 + 롤·피치·요) → IK → 부드러운 관절 궤적 (`panda_cartesian_controller`)
-- GUI에서 목표를 보내고 받는 노드 (`panda_gui`, `panda_cartesian_gui_controller`)
-- 조이스틱 직교 좌표 제어: 손끝 속도 → 관절 속도 (`panda_joystick_cartesian_controller`)
-- 시뮬 관절 상태에서 Panda 관절만 걸러 다시 발행 (`panda_joint_state_filter`, `panda_` 접두사 → `/isaac_joint_states`)
+- 원 그리기를 IK 세 가지로 구현해 비교
+- 목표 자세(위치 + 롤·피치·요) → IK → 부드러운 관절 궤적
+- GUI에서 목표를 보내고 받는 노드
+- 조이스틱 직교 좌표 제어: 손끝 속도 → 관절 속도
+- 시뮬 관절 상태에서 Panda 관절만 걸러 다시 발행 (`/isaac_joint_states`)
 
 시뮬로 가는 명령은 주행과 같이 `/joint_command`(JointState)에 Panda 7관절 + 손가락 2개 위치를 담아 보낸다.
 
@@ -21,7 +21,6 @@ date: 시뮬레이션 · 기록 4
 
 | | MoveIt | roboticstoolbox | ikpy |
 |---|---|---|---|
-| 노드 | `pandacontrol` | `panda_rtb` | `panda_ikpy` |
 | 로봇 모델 | MoveIt 설정 (URDF/SRDF) | 내장 DH 모델 | Panda URDF에서 체인 생성 |
 | 원 | 중심 (0.7, 0, 0.35), 반지름 15 cm, 220점 | 중심 (0.712, −0.01, 0.502), 반지름 8 cm, 180점 | 중심 (0.7, 0, 0.5), 반지름 8 cm, 한 바퀴 4초 |
 | IK 방식 | 직교 경로 계획(`compute_cartesian_path`) 후 실행 | 점마다 `ik_LM` (Levenberg–Marquardt) | 점마다 `inverse_kinematics` |
@@ -43,7 +42,7 @@ ikpy 쪽은 관절이 튀지 않게 장치를 가장 많이 넣었다.
 
 ## 목표 자세로 가기
 
-`panda_cartesian_controller`는 목표 위치와 롤·피치·요를 받아 한 번 IK를 풀고, 현재 관절에서 목표 관절까지 `jtraj`(5차 다항식 보간)로 2초짜리 궤적을 만들어 0.02초마다 한 점씩 보낸다. 회전을 쓰지 않으면 IK 마스크를 `[1,1,1,0,0,0]`으로 두어 위치만 맞춘다. GUI 버전은 `/gui_target_pose`, `/gui_use_euler`, `/gui_gripper_cmd`로 목표와 그리퍼를 받는다.
+목표 자세 노드는 목표 위치와 롤·피치·요를 받아 한 번 IK를 풀고, 현재 관절에서 목표 관절까지 `jtraj`(5차 다항식 보간)로 2초짜리 궤적을 만들어 0.02초마다 한 점씩 보낸다. 회전을 쓰지 않으면 IK 마스크를 `[1,1,1,0,0,0]`으로 두어 위치만 맞춘다. GUI 버전은 `/gui_target_pose`, `/gui_use_euler`, `/gui_gripper_cmd`로 목표와 그리퍼를 받는다.
 
 ## 조이스틱으로 손끝 밀기
 

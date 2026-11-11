@@ -5,14 +5,14 @@ date: 기록 1
 ---
 
 !!! summary "한 줄 요약"
-    로봇과 PC를 연결하고 ROS 2 제어 스택을 빌드해서, RViz의 Plan → Execute로 로봇을 처음 움직였다. 정해진 HOME 자세로 보내는 `move_home`도 만들었다.
+    로봇과 PC를 연결하고 ROS 2 제어 스택을 빌드해서, RViz의 Plan → Execute로 로봇을 처음 움직였다. 정해진 HOME 자세로 보내는 기능도 만들었다.
 
 ## 한 일
 
 - Ubuntu 22.04 + ROS 2 Humble에 franka_ros2 v2.0.2, libfranka 0.15.0 빌드
 - 로봇 쪽 FCI(외부 제어 인터페이스) 켜기, 실시간 스케줄링 권한 설정
 - 실행 순서 정리: bringup → MoveIt → 팔 컨트롤러 로드(평소엔 꺼 둠) → 움직일 때만 켜고 끝나면 끄기
-- `move_home`: 공식 SRDF의 "ready" 자세로 보내는 첫 스킬
+- HOME 이동: 공식 SRDF의 "ready" 자세로 보내는 첫 스킬
 - 새 노트북(NUC)으로 옮겨 같은 과정을 처음부터 다시 재현
 
 ## 트러블슈팅
@@ -40,7 +40,7 @@ date: 기록 1
 
 ## 결과
 
-실물 Plan/Execute 성공, `move_home` 실물 검증. 이후 모든 이동은 "계획을 먼저 보여 주고, `--execute`를 붙여야만 움직인다"는 원칙으로 만들었다.
+실물 Plan/Execute 성공, HOME 이동 실물 검증. 이후 모든 이동은 "계획을 먼저 보여 주고, 실행 옵션을 따로 줘야만 움직인다"는 원칙으로 만들었다.
 
 ## 원리
 

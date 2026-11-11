@@ -20,12 +20,12 @@ description: Teraffe URDF를 MuJoCo로 옮기고, 조이스틱 주행·조향·�
 
 | 항목 | 내용 |
 |---|---|
-| 원본 | `teraffe_urdf.urdf` (SolidWorks에서 내보낸 실제 로봇) |
-| 변환 | 실행할 때 URDF를 고쳐 MuJoCo MJCF로 만들고 캐시(`~/.cache/teraffe_mujoco`)에 저장 |
+| 원본 | 실제 로봇 URDF (SolidWorks에서 내보냄) |
+| 변환 | 실행할 때 URDF를 고쳐 MuJoCo MJCF로 만들고 캐시 폴더에 저장 |
 | 관절 | 다리 2단 직선 × 4 (순서대로 펴짐), 조향 × 4 (위치), 바퀴 × 4 (속도) |
 | 루트 | 자유 낙하(free joint). Isaac Lab과 같게 |
 | 충돌 | 자기 충돌 끔. 바퀴는 안정적인 원기둥 충돌체 |
-| 차체 메시 | `base_link.STL`이 MuJoCo의 STL 크기 한도를 넘어, 보이는 메시는 18만 면으로 줄이고 충돌용은 볼록 껍질로 따로 만듦 |
+| 차체 메시 | 차체 STL이 MuJoCo의 STL 크기 한도를 넘어, 보이는 메시는 18만 면으로 줄이고 충돌용은 볼록 껍질로 따로 만듦 |
 | 물리 | 0.005 s 스텝, `implicitfast` 적분기 |
 | 시작값 | Isaac Lab 과제의 시작 높이 1.7 m, 목표 거리 2–5 m, ±30°를 그대로 가져옴 |
 

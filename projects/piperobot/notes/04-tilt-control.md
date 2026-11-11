@@ -27,11 +27,11 @@ date: 제어 · 기록 2
 
 ```text
 e_roll = 0 − Roll
-μ_roll,f = Kp · e_roll,f + Kd · d(roll_f)/dt
-μ_roll,r = Kp · e_roll,r + Kd · d(roll_r)/dt
+μ_roll,f = Kp · e_roll,f + Kd · d(e_roll,f)/dt
+μ_roll,r = Kp · e_roll,r + Kd · d(e_roll,r)/dt
 ```
 
-목표 Roll을 0으로 두고, 오차와 변화량으로 보정 항을 만든다. 모듈이 한쪽으로 기울면 좌우 바퀴에 반대 부호로 들어가, 기운 쪽을 되돌리는 방향으로 모듈을 배관 둘레를 따라 굴린다.
+목표 Roll을 0으로 두고, 오차와 오차의 변화량으로 보정 항을 만든다. 목표가 0으로 고정이라 `d(e_roll)/dt = −d(Roll)/dt`이다. D 항이 기울어지는 속도와 반대 방향으로 작용해서, 되돌아오는 움직임에 브레이크를 건다. 모듈이 한쪽으로 기울면 좌우 바퀴에 반대 부호로 들어가, 기운 쪽을 되돌리는 방향으로 모듈을 배관 둘레를 따라 굴린다.
 
 ### Yaw 보정 (앞뒤 공통)
 

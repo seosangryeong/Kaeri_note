@@ -81,7 +81,7 @@ description: 드론에 단 GM 계수기의 CPM과 GPS 위경도를 LTE로 서버
 
 ## 조이스틱 조종과 Genesis
 
-- **조이스틱:** ROS 2 Humble의 `joy` 노드로 Xbox 360 패드를 읽고, 직접 만든 `joystick_control` 노드가 축 값을 `/cmd_vel`(전후·좌우·상하·yaw·roll·pitch)로, 버튼 하나를 `/reset`으로 바꿔 시뮬레이터의 드론 컨트롤러에 보낸다. 버튼 번호는 직접 눌러 보며 맞췄다.
+- **조이스틱:** ROS 2 Humble의 `joy` 노드로 Xbox 360 패드를 읽고, 직접 만든 조이스틱 변환 노드가 축 값을 `/cmd_vel`(전후·좌우·상하·yaw·roll·pitch)로, 버튼 하나를 `/reset`으로 바꿔 시뮬레이터의 드론 컨트롤러에 보낸다. 버튼 번호는 직접 눌러 보며 맞췄다.
 - **Genesis:** Genesis 시뮬레이터의 드론 호버링 예제로 강화학습(PPO, 환경 8192개, 300회 반복)을 돌리고, 학습된 정책 파일(.pt)로 드론을 움직여 봤다.
 
 ![조이스틱 ROS 2 노드 그래프](assets/joystick-graph.png)

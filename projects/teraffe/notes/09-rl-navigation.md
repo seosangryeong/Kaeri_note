@@ -13,12 +13,12 @@ description: Isaac Lab에서 PPO로 Teraffe가 거친 지형 위 목표 지점�
 
 ## 한 일
 
-- Teraffe USD를 Isaac Lab 로봇 설정으로 등록 (`TERAFFE_CFG`)
-- 매니저 기반 환경 `Isaac-Teraffe-v0`: 액션·관측·리워드·종료·이벤트·커리큘럼
-- 다리 2단 리프트를 액션 하나로 다루는 사용자 액션 (`SequentialPrismaticJointAction`)
-- 로봇 앞 부채꼴 안에 목표 지점을 뽑는 커맨드 (`TeraffeNavigationCommand`)
+- Teraffe USD를 Isaac Lab 로봇 설정으로 등록
+- 매니저 기반 학습 환경: 액션·관측·리워드·종료·이벤트·커리큘럼
+- 다리 2단 리프트를 액션 하나로 다루는 사용자 액션
+- 로봇 앞 부채꼴 안에 목표 지점을 뽑는 커맨드
 - 바퀴 접촉, 옆 미끄러짐, 지면 기준 높이 등 리워드 함수
-- 지형 12종 커리큘럼 (`Teraffe_ROUGH_TERRAINS_CFG`)
+- 지형 12종 커리큘럼
 - RSL-RL PPO 학습 (rl_games, skrl, SB3 설정도 등록)
 
 ## 과제가 바뀐 과정
@@ -173,7 +173,7 @@ description: Isaac Lab에서 PPO로 Teraffe가 거친 지형 위 목표 지점�
 
 ## 남은 점
 
-- 도착: 거리 벌점(−10)은 거리에 비례해서 가까워져도 차이가 작다. 가까운 곳에서 더 날카로운 리워드(tanh 거리, 도착 보너스)를 넣는다. `navigation_target_distance_tanh`, `navigation_arrival_bonus` 함수를 만들어 두었고 다음 학습에서 켠다.
+- 도착: 거리 벌점(−10)은 거리에 비례해서 가까워져도 차이가 작다. 가까운 곳에서 더 날카로운 리워드(tanh 거리, 도착 보너스)를 넣는다. 두 리워드 함수를 만들어 두었고 다음 학습에서 켠다.
 - 장애물 회피(장애물 배치, 근접 종료, 개수 커리큘럼)와 깊이 카메라 관측은 만들어 두었고, 지금은 꺼 두었다.
 - 정면 정렬 리워드는 함수 이름(속도 정렬)과 달리 차체 정면 방향으로 계산한다. 이름을 계산에 맞게 정리하기
 

@@ -9,7 +9,7 @@ date: 시뮬레이션 · 기록 2
 
 ## 한 일
 
-- 주행 노드에 자동 수평 모드 추가 (`teraffe_control_imu`, A 버튼으로 켜고 끄기)
+- 주행 노드에 자동 수평 모드 추가 (A 버튼으로 켜고 끄기)
 - 차체 기울기 읽기: 시뮬의 TF `World → panda_link0` 회전을 roll·pitch로 변환
 - 기울기를 다리 네 개의 길이 변화로 나누는 식
 - 각도에 따라 속도를 바꾸는 구간별 속도 곡선
@@ -75,8 +75,8 @@ date: 시뮬레이션 · 기록 2
 
 ## 남은 점
 
-- 그래프·리포트 노드(`teraffe_control_imu_plot`)가 받는 `/auto_level/status`(Float64MultiArray)와, 수평 노드가 내보내는 `/panda_roll_deg`, `/panda_pitch_deg`(Float64)를 한 형식으로 맞추기
-- 시뮬에서는 TF로 "정답 자세"를 바로 읽는다. 실물에서는 IMU 잡음과 지연이 있으니 필터(`filter_alpha`, 지금은 1.0 = 필터 없음)를 켜고 조정하기
+- 그래프·리포트 노드가 받는 `/auto_level/status`(Float64MultiArray)와, 수평 노드가 내보내는 `/panda_roll_deg`, `/panda_pitch_deg`(Float64)를 한 형식으로 맞추기
+- 시뮬에서는 TF로 "정답 자세"를 바로 읽는다. 실물에서는 IMU 잡음과 지연이 있으니 저역 통과 필터(지금은 계수 1.0 = 필터 없음)를 켜고 조정하기
 
 ## 원리
 

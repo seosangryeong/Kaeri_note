@@ -74,7 +74,6 @@ description: 다리 길이를 바꾸는 바퀴형 고소작업로봇 Teraffe의 
 
 | | 시뮬레이션 | 실물 |
 |---|---|---|
-| 패키지 | `teraffe_control_agent` | `teraffe_drive_control_agent` |
 | 대상 | Isaac Sim 4.5 속 Teraffe + 지지팔 + Franka Panda | 실제 다리 리프트 4개 |
 | 명령이 가는 곳 | `/joint_command` 토픽 하나 (JointState) | 모터에 CAN, RS-485로 직접 |
 | 입력 | 조이스틱, GUI, 로컬 LLM, 카메라 | 웹 UI, 데스크톱 UI, ROS 토픽 |
@@ -168,7 +167,7 @@ MuJoCo에서는 실제 로봇 URDF로 모델을 다시 만들어 조이스틱 �
 
 ## 다음 할 일
 
-1. 실물 주행·조향 모듈 구현 (`wheel_module.py`, `steering_motor.py`)
+1. 실물 주행·조향 모듈 구현
 2. 리프트 리밋 각도를 기구의 실제 동작 범위로 측정해 교체
 3. 시뮬의 다리 높이 명령을 실물 리프트 토픽(`/robot/lift_command`)과 연결
 4. Teraffe용 로봇팔을 개발한 뒤, 실제 밸브로 시험한 인식 결과를 로봇팔과 연결해 실물 밸브 조작 실험 ([FR3 로봇팔](../fr3/index.html)의 손목 카메라 검출·접근 구성 활용)

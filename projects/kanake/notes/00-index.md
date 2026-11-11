@@ -61,7 +61,7 @@ description: 16관절 뱀로봇 KAERI-SNAKE IV를 정현파 보행 파라미터�
 
 | 항목 | 사양 |
 |---|---|
-| 관절 | 16 DOF. Yaw(수평)·Pitch(수직) 관절 교차 배치. 코드에서는 `j1`~`j16`, 홀수 = 수직, 짝수 = 수평 |
+| 관절 | 16 DOF. Yaw(수평)·Pitch(수직) 관절 교차 배치. 관절 이름은 `j1`~`j16`, 홀수 = 수직, 짝수 = 수평 |
 | 크기 | 전체 길이 760 mm, 모듈 26 × 37.5 mm |
 | 몸체 | `head`, `Link1`~`Link15`, `tail` (17개) |
 | 센서 | 헤드 RGB 카메라 1, LED 조명 2 |
@@ -85,7 +85,7 @@ description: 16관절 뱀로봇 KAERI-SNAKE IV를 정현파 보행 파라미터�
 
 | 항목 | 내용 |
 |---|---|
-| 시뮬레이터 | Isaac Sim 4.5, Isaac Lab (포크 `IsaacLab_snake`) |
+| 시뮬레이터 | Isaac Sim 4.5, Isaac Lab (뱀로봇용으로 고친 버전) |
 | 학습 | RSL-RL PPO, 4096 환경 |
 | 컴퓨터 | Intel Core i7-13700, 32 GB RAM, NVIDIA RTX 4070 Super |
 | ROS | ROS 2 Humble |
