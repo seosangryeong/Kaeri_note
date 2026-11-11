@@ -23,8 +23,8 @@ description: 16관절 뱀로봇 KAERI-SNAKE IV를 정현파 보행 파라미터�
 
 | 발표 | 내용 |
 |---|---|
-| UR 2025 (22nd International Conference on Ubiquitous Robots, Texas A&M University, 2025.07, 포스터) | "Deep Reinforcement Learning for Snake Robot Locomotion" (서상령, 류동석, 이원서, 신호철) |
-| ICCAS 2025 (25th International Conference on Control, Automation and Systems, 인천 송도, 2025.11, 구두) | "Sim-to-Real Deployment of a Sinusoidal Policy for Snake Robots" (서상령, 유용균, 류동석, 이원서, 신호철) |
+| UR 2025 (22nd International Conference on Ubiquitous Robots, Texas A&M University, 2025.07, 포스터) | "Deep Reinforcement Learning for Snake Robot Locomotion" (서상령, 류동석, 이원서, 신호철). 관절 위치를 직접 내는 초기 end-to-end 정책 버전 |
+| ICCAS 2025 (25th International Conference on Control, Automation and Systems, 인천 송도, 2025.11, 구두) | "Sim-to-Real Deployment of a Sinusoidal Policy for Snake Robots" (서상령, 유용균, 류동석, 이원서, 신호철). 진폭 보간·주파수·위상 8개 파라미터와 저역 통과 필터를 쓴 이전 정현파 정책 버전으로, 학위논문 최종 정책(액션 18개)과 다름 |
 
 ## 연구 흐름
 
@@ -35,8 +35,8 @@ description: 16관절 뱀로봇 KAERI-SNAKE IV를 정현파 보행 파라미터�
 | 3 | 강화학습 과제를 여러 번 바꾸며 액션 구조를 찾음 | [기록 3](03-rl-history.md) |
 | 4 | 정현파 파라미터 액션으로 속도 명령 추종 학습 | [기록 4](04-rl-velocity.md) |
 | 5 | 위치 추종 학습 + A* 전역 경로 + 웨이포인트 | [기록 5](05-rl-navigation.md) |
-| 6 | U자형 통로 수동 조종, 미로 경로 추종 실험 (ATE 6.0–6.6 cm) | [기록 6](06-path-experiments.md) |
-| 7 | 학습 정책을 ROS 2 노드로 옮겨 실물에서 실행 | [기록 7](07-policy-deploy.md) |
+| 6 | U자형 통로 수동 조종, 미로 경로 추종 실험 (시뮬레이션, ATE 6.0–6.6 cm) | [기록 6](06-path-experiments.md) |
+| 7 | 학습 정책을 ROS 2 노드로 옮겨 실물에서 실행 (실행 구조까지. 경로 주행·내비게이션은 실물에서 검증하지 못함) | [기록 7](07-policy-deploy.md) |
 
 ## 왜 정현파 파라미터를 학습하나
 
@@ -48,6 +48,8 @@ description: 16관절 뱀로봇 KAERI-SNAKE IV를 정현파 보행 파라미터�
 | **정현파 파라미터 강화학습 (이 연구)** | 파형 구조로 탐색 공간을 줄이고, 명시적 함수라 지연 없이 바로 바뀜 | 주파수를 고정하고 위상을 두 값으로 묶는 등 표현을 제한함 |
 
 ## 주요 결과
+
+시뮬레이션 보정(실물 실험과 비교)을 뺀 나머지는 모두 시뮬레이션 결과다.
 
 | 항목 | 결과 |
 |---|---|

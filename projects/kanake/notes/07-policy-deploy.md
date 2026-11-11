@@ -6,7 +6,7 @@ description: Isaac Lab에서 학습한 KAERI-SNAKE IV 정책을 ROS 2 노드로 
 ---
 
 !!! summary "한 줄 요약"
-    학습한 정책을 TorchScript(JIT)나 ONNX로 내보내고, ROS 2 노드가 `/joint_states`와 `/cmd_vel`로 Isaac Lab과 **같은 순서·같은 형식의 관측**을 다시 만들어 넣게 했다. 정책은 40 Hz로 돌고, 관절 명령은 80 Hz로 보낸다. 사인파 액션의 시간 t도 Isaac Lab처럼 정책 한 스텝마다 0.025초씩 늘린다. 시뮬과 실물의 관절 기록을 CSV로 남겨 비교했다.
+    학습한 정책을 TorchScript(JIT)나 ONNX로 내보내고, ROS 2 노드가 `/joint_states`와 `/cmd_vel`로 Isaac Lab과 **같은 순서·같은 형식의 관측**을 다시 만들어 넣게 했다. 정책은 40 Hz로 돌고, 관절 명령은 80 Hz로 보낸다. 사인파 액션의 시간 t도 Isaac Lab처럼 정책 한 스텝마다 0.025초씩 늘린다. 시뮬과 실물의 관절 기록을 CSV로 남겨 비교했다. 실물에서는 정책 실행 구조를 만들고 돌려 본 단계이고, 학습한 정책으로 목표 경로를 따라가는 자율 내비게이션은 배터리·IMU 등 하드웨어 제약 때문에 실물에서 검증하지 못했다.
 
 ## 한 일
 
