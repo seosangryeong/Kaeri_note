@@ -53,11 +53,21 @@ description: 다리 길이를 바꾸는 바퀴형 고소작업로봇 Teraffe의 
 ![통합 모델](assets/teraffe-integration.png)
 *왼쪽부터: 4륜 고소작업 로봇, Franka Panda, 다리를 펴고 로봇팔을 얹은 통합 모델.*
 
+## 맡은 일
+
+3인 팀 프로젝트다. 지금은 세 명이 실물 로봇을 함께 만들고 있다.
+
+| 담당 | 내용 |
+|---|---|
+| 본인 | 로봇 제어 시스템 개발, 텔레스코픽 리프트 구조 설계 |
+| 팀원 1 | 주행 안정성을 높이는 서스펜션 구조 설계 |
+| 팀원 2 | 작업과 단차 이동 때 로봇을 보조하는 실린더 구조 설계 |
+
 ## 발표
 
 | 발표 | 내용 |
 |---|---|
-| 2026 춘계 원자력학회 | 「고소 위치 밸브 조작을 위한 4륜 이동형 고소작업 로봇 개발」 (서상령, 류정헌, 류동석, 신호철, KAERI Extreme Robot Lab) |
+| 2026 한국원자력학회 춘계학술발표회 (제주, 2026.05, 포스터) | "Development of a 4-Wheel Elevated Mobile Robot for High-Position Valve Manipulation" (서상령, 류정헌, 류동석, 신호철) |
 | KAERI 원자력로봇부 발표 (2026.10) | Light Weight Mobile Elevating Work Platform (MEWP): 메커니즘, 프로토타입, 시뮬레이션, 강화학습 |
 
 ## 두 갈래

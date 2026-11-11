@@ -11,6 +11,21 @@ description: 16관절 뱀로봇 KAERI-SNAKE IV를 정현파 보행 파라미터�
 ![KAERI-SNAKE IV](assets/kaeri-snake.jpg)
 *KAERI-SNAKE IV. Yaw·Pitch 관절이 번갈아 16개, 길이 760 mm.*
 
+## 프로젝트
+
+| 항목 | 내용 |
+|---|---|
+| 기간 | 2024.03 – 2025.12 |
+| 구성 | 개인 프로젝트 (로봇 강화학습) |
+| 학위논문 | 「심층 강화학습을 통한 뱀 로봇 주기적 이동 파라미터 최적화 제어」, UST 인공지능 전공, 2026.02 |
+
+## 발표
+
+| 발표 | 내용 |
+|---|---|
+| UR 2025 (22nd International Conference on Ubiquitous Robots, Texas A&M University, 2025.07, 포스터) | "Deep Reinforcement Learning for Snake Robot Locomotion" (서상령, 류동석, 이원서, 신호철) |
+| ICCAS 2025 (25th International Conference on Control, Automation and Systems, 인천 송도, 2025.11, 구두) | "Sim-to-Real Deployment of a Sinusoidal Policy for Snake Robots" (서상령, 유용균, 류동석, 이원서, 신호철) |
+
 ## 연구 흐름
 
 | 단계 | 한 일 | 기록 |

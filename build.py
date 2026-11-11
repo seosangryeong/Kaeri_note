@@ -53,11 +53,11 @@ PROJECTS = [
     {'slug': 'fr3', 'name': 'FR3 로봇팔',
      'period': '2026.09 – 진행 중'},
     {'slug': 'teraffe', 'name': 'Teraffe 고소작업로봇',
-     'period': '2026.03 – 진행 중'},
+     'period': '2026.04 – 진행 중'},
     {'slug': 'piperobot', 'name': 'PipeRobot 배관 로봇',
      'period': '2024.12 – 2025.12'},
     {'slug': 'kanake', 'name': 'Kanake 뱀로봇',
-     'period': '2024.03 – 2026.02'},
+     'period': '2024.03 – 2025.12'},
     {'slug': 'other', 'name': '기타 프로젝트',
      'period': '2023.06 – 2026.02', 'collection': True},
 ]
