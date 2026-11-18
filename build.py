@@ -22,6 +22,8 @@ Besides normal Markdown (tables, lists, code), notes can use:
     !!! issue "제목"                 problem / cause / fix card (consecutive
         **문제** ...                 cards are laid out side by side)
     !!! lesson "배운 점"             outlined box
+    toc: true (in the header)        page table of contents from the ## headings, in its own
+                                     column left of the project list (folds to the top on narrow screens)
     ??? 원리: 제목                    fold-out explanation, closed by default
         (indented Markdown)
 
@@ -66,7 +68,18 @@ PROJECTS = [
 # ---------- Markdown ----------
 
 def render(text):
-    return markdown.markdown(text, extensions=EXTENSIONS)
+    from markdown.extensions.toc import slugify_unicode
+    return markdown.markdown(text, extensions=EXTENSIONS,
+                             extension_configs={'toc': {'slugify': slugify_unicode}})
+
+
+def page_toc(body):
+    """Links to the h2 sections of a rendered note."""
+    items = ''
+    for anchor, inner in re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', body, flags=re.S):
+        label = re.sub(r'<[^>]+>', '', inner).strip()
+        items += f'<li><a href="#{anchor}">{label}</a></li>'
+    return f'<ol>{items}</ol>' if items else ''
 
 
 def read_note(path):
@@ -118,6 +131,22 @@ def polish(html):
 
 # ---------- page frame ----------
 
+# highlights the section currently on screen in the page table of contents
+TOC_SCRIPT = """<script>
+(() => {
+  const links = [...document.querySelectorAll('.page-toc a')];
+  const heads = links.map(a => document.getElementById(decodeURIComponent(a.hash.slice(1)))).filter(Boolean);
+  if (!heads.length) return;
+  const mark = () => {
+    let cur = heads[0];
+    for (const h of heads) if (h.getBoundingClientRect().top < 120) cur = h;
+    links.forEach(a => a.classList.toggle('current', decodeURIComponent(a.hash.slice(1)) === cur.id));
+  };
+  document.addEventListener('scroll', mark, {passive: true});
+  mark();
+})();
+</script>"""
+
 def project_list(current, up):
     """Right-hand list of projects. `up` is '' on the home page, '../' inside a project."""
     home = ' class="current" aria-current="page"' if current is None else ''
@@ -128,7 +157,7 @@ def project_list(current, up):
     return items
 
 
-def page(*, title, description, body, left, current, up, when=''):
+def page(*, title, description, body, left, current, up, when='', toc=''):
     full = SITE_TITLE if title == SITE_TITLE else f'{title} | {SITE_TITLE}'
     when = f'<p class="meta">{escape(when)}</p>' if when else ''
     projects = project_list(current, up)
@@ -136,6 +165,13 @@ def page(*, title, description, body, left, current, up, when=''):
                 f'<details class="side" open><summary>기록 목록</summary><ol>{left}</ol></details>'
                 f'</div></nav>') if left else ''
     layout = 'layout' if left else 'layout no-left'
+    toc_side = toc_inline = toc_script = ''
+    if toc:
+        layout += ' has-toc'
+        toc_side = (f'<nav class="page-toc" aria-label="이 페이지 목차"><div class="sticky">'
+                    f'<p class="toc-title">이 페이지</p>{toc}</div></nav>')
+        toc_inline = f'<details class="toc-inline"><summary>이 페이지 목차</summary>{toc}</details>'
+        toc_script = TOC_SCRIPT
     return f'''<!doctype html>
 <html lang="ko">
 <head>
@@ -158,13 +194,16 @@ def page(*, title, description, body, left, current, up, when=''):
 {left_nav}
 <main class="content">
 <header class="note-head">{when}<h1>{escape(title)}</h1></header>
+{toc_inline}
 {body}
 </main>
+{toc_side}
 <nav class="projects" aria-label="프로젝트 목록"><div class="sticky">
 <p class="projects-title">프로젝트</p><ol>{projects}</ol>
 </div></nav>
 </div>
 <footer class="site-footer">seosangryeong · {SITE_TITLE}</footer>
+{toc_script}
 </body>
 </html>
 '''
@@ -205,10 +244,11 @@ def build_project(project, folder, notes):
         # the first project's page.
         on_index = name == 'index.html' and not project.get('collection')
         when = project['period'] if on_index else meta.get('date', '')
+        toc = page_toc(body) if meta.get('toc', '').lower() == 'true' else ''
         (out / name).write_text(page(
             title=title, description=meta.get('description', title), body=body,
             left=left_nav(notes, name), current=project['slug'], up='../',
-            when=when), encoding='utf-8')
+            when=when, toc=toc), encoding='utf-8')
 
 
 def home():

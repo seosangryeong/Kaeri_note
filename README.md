@@ -24,7 +24,7 @@ python3 -m http.server -d _site 8080           # http://localhost:8080
 ## 기록 쓰기
 
 - 프로젝트마다 `notes/`에 기록(`00-index.md`가 개요, 나머지는 파일 이름 순서), `assets/`에 사진을 둡니다.
-- 기록 맨 위에 `title`, `nav`(왼쪽 목록 이름), `date`를 적습니다. 쓸 수 있는 상자(`!!! summary`, `!!! issue`, `??? 원리` 등)는 `build.py` 위쪽 설명과 기존 기록을 참고하세요.
+- 기록 맨 위에 `title`, `nav`(왼쪽 목록 이름), `date`를 적습니다. 긴 기록은 `toc: true`를 넣으면 `##` 제목으로 이 페이지 목차가 생깁니다(넓은 화면은 프로젝트 목록 왼쪽 열, 좁은 화면은 본문 위 접이식). 쓸 수 있는 상자(`!!! summary`, `!!! issue`, `??? 원리` 등)는 `build.py` 위쪽 설명과 기존 기록을 참고하세요.
 - 새 프로젝트는 `projects/<이름>/notes`, `projects/<이름>/assets`를 만들고 `build.py`의 `PROJECTS`와 `home.md` 목록에 한 줄씩 추가합니다.
 
 ## 구성
