@@ -37,6 +37,7 @@ description: 16관절 뱀로봇 KAERI-SNAKE IV를 정현파 보행 파라미터�
 | 5 | 위치 추종 학습 + A* 전역 경로 + 웨이포인트 | [기록 5](05-rl-navigation.md) |
 | 6 | U자형 통로 수동 조종, 미로 경로 추종 실험 (시뮬레이션, ATE 6.0–6.6 cm) | [기록 6](06-path-experiments.md) |
 | 7 | 학습 정책을 ROS 2 노드로 옮겨 실물에서 실행 (실행 구조까지. 경로 주행·내비게이션은 실물에서 검증하지 못함) | [기록 7](07-policy-deploy.md) |
+| 8 | MuJoCo로 옮겨 이방성 마찰을 주고, 머리 시선을 고정한 serpentine과 Teraffe 난이도 지형 커리큘럼을 학습 | [기록 8](08-mujoco-rl.md) |
 
 ## 왜 정현파 파라미터를 학습하나
 
